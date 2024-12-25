@@ -99,7 +99,7 @@ class ToolYoloDetectionNode:
     def detect(self, image,object,padding):
 
         self.download_large_file('https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8l.pt',os.path.join(folder_paths.get_folder_paths("yolov8")[0],'yolov8l.pt'))
-        self.download_large_file('https://huggingface.co/spaces/cc1234/stashface/resolve/main/.deepface/weights/centerface.onnx?download=true',os.path.join(folder_paths.get_folder_paths("yolov8")[0],'centerface.onnx'))
+        # self.download_large_file('https://huggingface.co/spaces/cc1234/stashface/resolve/main/.deepface/weights/centerface.onnx?download=true',os.path.join(folder_paths.get_folder_paths("yolov8")[0],'centerface.onnx'))
 
         # Convert tensor to numpy array and then to PIL Image
         image_tensor = image
