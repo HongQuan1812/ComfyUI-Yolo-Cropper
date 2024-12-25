@@ -99,7 +99,7 @@ class ToolYoloDetectionNode:
     def detect(self, image,object,padding):
 
         self.download_large_file('https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8l.pt',os.path.join(folder_paths.get_folder_paths("yolov8")[0],'yolov8l.pt'))
-        self.download_large_file('https://huggingface.co/spaces/cc1234/stashface/resolve/main/.deepface/weights/centerface.onnx?download=true',os.path.join(folder_paths.get_folder_paths("yolov8")[0],'yolov8n-face.pt'))
+        self.download_large_file('https://huggingface.co/spaces/cc1234/stashface/resolve/main/.deepface/weights/centerface.onnx?download=true',os.path.join(folder_paths.get_folder_paths("yolov8")[0],'centerface.onnx'))
 
         # Convert tensor to numpy array and then to PIL Image
         image_tensor = image
@@ -107,7 +107,7 @@ class ToolYoloDetectionNode:
         image = Image.fromarray((image_np.squeeze(0) * 255).astype(np.uint8))  # Convert float [0,1] tensor to uint8 image
 
         if object == "face":
-            model = YOLO(f'{os.path.join(folder_paths.models_dir, "yolov8")}/yolov8n-face.pt')  # load face model
+            model = YOLO(f'{os.path.join(folder_paths.models_dir, "yolov8")}/centerface.onnx')  # load face model
         else:
             model = YOLO(f'{os.path.join(folder_paths.models_dir, "yolov8")}/yolov8l.pt')  # load regular yolo model
       
